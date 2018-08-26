@@ -1,0 +1,42 @@
+
+<button class="addPost">add</button>
+<div class="formAdd hidden">
+	<form method="post" action="/add">
+			<label>origin</label>
+		<input type="text" name="origin">
+			<label>destination</label>
+		<input type="text" name="destination">
+			<label>duration</label>
+		<input type="text" name="duration">
+		<input type="submit" value="save new">
+	</form>
+</div>
+
+<form method="post" action="/edit" class="formEdit hidden">
+	<input type="text" name="id" id='edit-form-id' class="hidden">
+		<label>origin</label>
+	<input type="text" name="origin" id='edit-form-origin'>
+		<label>destination</label>
+	<input type="text" name="destination" id='edit-form-destination'>
+		<label>duration</label>
+	<input type="text" name="duration" id='edit-form-duration'>
+	<input type="submit" value="save edit">
+</form>
+
+
+	<div class="container">
+{{#each temp }}
+	<div>
+		
+		{{ this.id }}: {{ this.origin }} - {{ this.destination }}, {{ this.duration }} 
+		<button class="edit" 
+				data-id="{{ this.id }}"
+				data-origin={{ this.origin }}
+				data-destination={{ this.destination }}
+				data-duration={{ this.duration }} >edit</button>
+		<button class="delete" 
+				data-id="{{ this.id }}">del</button>
+	</div>
+
+{{/each}}
+	</div>

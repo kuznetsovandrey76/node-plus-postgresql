@@ -1,0 +1,17 @@
+{
+  "name": "node-plus-postgresql",
+  "version": "1.0.0",
+  "description": "local version Node plus Postrgesql using pgAdmin3",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrey Kuznetsov",
+  "license": "ISC",
+  "dependencies": {
+  	"body-parser": "*",
+    "express": "*",
+    "express-handlebars": "*",
+    "pg": "*"
+  }
+}
