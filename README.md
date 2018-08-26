@@ -9,3 +9,5 @@
   - main.js     
   - style.css 
 ```  
+1. `npm install`  
+2. `node app`  
