@@ -1,4 +1,4 @@
-- app.js   
+```- app.js   
 - package.json   
 - index.js   
 - views/   
@@ -7,4 +7,5 @@
     - main.handlebars   	
 - public/   
   - main.js     
-  - style.css   
+  - style.css 
+```  
