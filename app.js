@@ -129,6 +129,7 @@ app.post('/edit', function(req, res) {
 		});
 });
 
-app.listen(3000, function(){
-	console.log('http://localhost:3000');
+app.listen(process.env.PORT || 5432, function(){
+	console.log('http://localhost:5432');
+	console.log(process.env.PORT);
 });
