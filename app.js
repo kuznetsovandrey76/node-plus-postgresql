@@ -129,7 +129,9 @@ app.post('/edit', function(req, res) {
 		});
 });
 
-app.listen(process.env.PORT || 5432, function(){
-	console.log('http://localhost:5432');
-	console.log(process.env.PORT);
+
+// При загрузке через Heroku 
+// Приложение включается через другой порт: process.env.PORT
+app.listen(process.env.PORT || 8080, function(){
+	console.log('http://localhost:8080');
 });
