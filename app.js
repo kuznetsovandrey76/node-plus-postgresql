@@ -5,7 +5,7 @@ let express = require('express'),
 	{ Pool, Client } = require('pg'),
 	app = express();
 
-
+// LOCAL version 
 const USER = {
 	// name and password - при входе в pgAdmin3
 	name: 'postgres',
@@ -19,8 +19,27 @@ const USER = {
 	table: 'flights1'
 }
 
+// SERVER version 
+const USER_SERVER = {
+	// name and password - все данные с Heroku 
+	name: 'wwagzkrthsjslb',
+	password: 'f037a36e6e2452e351f9e88446df480d013dcc943b5de972a461682fb8811dd9',
+	// Локальные данные
+	host: 'ec2-54-217-235-159.eu-west-1.compute.amazonaws.com',
+	port: '5432',
+	// db - имя БД с которой работаю
+	db: 'd6u19tp8jutgfb',
+	// table - таблица с которой работаю, расположена в db
+	table: 'flights1'
+}
+
+
 // Соединение с БД
-const connect = `postgresql://${USER.name}:${USER.password}@${USER.host}:${USER.port}/${USER.db}`;
+// Local
+// const connect = `postgresql://${USER.name}:${USER.password}@${USER.host}:${USER.port}/${USER.db}`;
+
+// Server Heroku
+const connect = `postgres://${USER_SERVER.name}:${USER_SERVER.password}@${USER_SERVER.host}:${USER_SERVER.port}/${USER_SERVER.db}`;
 
 
 app.use(express.static(__dirname + '/public'));
@@ -48,10 +67,12 @@ app.get('/', function(req, res){
 
 	const client = new Client({
 	  connectionString: connect,
+	  ssl: true
 	});
 	client.connect();
 	// Использую res2 чтобы не было конфликта имен
 	client.query(`SELECT * FROM ${USER.table}`, (err, res2) => {
+	  // test - можно удалять	
 	  res.render('home', {temp: res2.rows, test: 'hello'});
 	  client.end();
 	});
@@ -63,6 +84,7 @@ app.get('/', function(req, res){
 app.post('/add', function(req, res) {
 	const client = new Client({
 	  connectionString: connect,
+  	  ssl: true
 	});
 	client.connect();
 
@@ -79,6 +101,7 @@ app.post('/add', function(req, res) {
 app.delete('/delete/:id', function(req, res) {
 	const client = new Client({
 	  connectionString: connect,
+	  ssl: true
 	});
 	client.connect();
 
@@ -91,10 +114,11 @@ app.delete('/delete/:id', function(req, res) {
 });
 
 
-// Редактирую
+// Редактирую пост
 app.post('/edit', function(req, res) {
 	const client = new Client({
 	  connectionString: connect,
+	  ssl: true
 	});
 	client.connect();
 
