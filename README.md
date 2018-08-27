@@ -13,6 +13,7 @@ _Структура_
 ```  
 1. `npm install`  
 2. `node app`  
+3. `touch Procfile` in Procfile `web: node app.js`    
 
 _Предварительная работа в psql_   
 1. При входе в SQL SHELL(psql) все данные берем из pgAdmin3 or Heroku  
